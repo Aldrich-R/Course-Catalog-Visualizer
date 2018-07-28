@@ -1,4 +1,9 @@
 from django.http import HttpResponse
+from django.template import loader
+
+from .models import Course
 
 def main(request):
-	return HttpResponse("The course diagram will be displayed here.")
+	template = loader.get_template('main/main.html')
+	context = {}
+	return HttpResponse(template.render(context, request))
